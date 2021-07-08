@@ -85,6 +85,7 @@ else
       local Module = (loadstring(game:HttpGetAsync('https://pastebin.com/raw/edJT9EGX'))())
       local ModuleWindow = Module:CreateWindow("Server Hop")
       local ModuleButton = ModuleWindow:AddButton({text = "Start", callback = function() loadstring(Hop)() end})
+      local ModuleButton = ModuleWindow:AddButton({text = "Rejoin", callback = function() game:GetService("TeleportService"):Teleport(game.PlaceId) end})
       local ModuleButton = ModuleWindow:AddButton({text = "Break", callback = function() BreakTradeLoop = true end})
       local CW = Module:CreateWindow("Config")
 
