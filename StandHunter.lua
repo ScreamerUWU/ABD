@@ -22,7 +22,7 @@ if not game.IsLoaded then
 end
 
 local ConfigName = ("ABDHCONFIG.JSON")
-local ConfigDefault = ('["CurrentScript": "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua"]')
+local ConfigDefault = ('{"CurrentScript": "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua"}')
 
 local UpdateCurrent = function(Number)
 
