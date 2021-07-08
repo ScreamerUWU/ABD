@@ -22,14 +22,16 @@ if not game.IsLoaded then
 end
 
 local ConfigName = ("ABDHCONFIG.JSON")
-local ConfigDefault = ('{"CurrentScript": "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua"}')
+local ConfigDefault = {
+ CurrentScript = "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua"
+}
 
 local UpdateCurrent = function(Number)
 
    if isfile(ConfigName) then
        print("Is File")
    else
-       writefile(ConfigName, ConfigDefault)
+       writefile(ConfigName, game:GetService("HttpService"):JSONEncode(ConfigDefault))
    end
    
    local File = (readfile(ConfigName))
