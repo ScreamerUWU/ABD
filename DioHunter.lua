@@ -3,6 +3,44 @@
 local Hop = game:HttpGet("https://raw.githubusercontent.com/ScreamerUWU/MISC/main/Hop.lua")
 local ServerHook = ("https://discord.com/api/webhooks/861402224383229973/ZhmsiuvqmpcQtuyWxt6W_mHJbQ6mqiRampqB01MFXAMA1PjpWIIub8QhxDAaNY052twX")
 
+local ConfigName = ("ABDHCONFIG.JSON")
+local ConfigDefault = {
+ CurrentScript = "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua"
+}
+local ConfigFrog = {
+ CurrentScript = "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/FrogHunter.lua"
+}
+local ConfigStand = {
+ CurrentScript = "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua"
+}
+local ConfigDio = {
+ CurrentScript = "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/DioHunter.lua"
+}
+
+local UpdateCurrent = function(Number)
+
+   if isfile(ConfigName) then
+       print("Is File")
+   else
+       writefile(ConfigName, game:GetService("HttpService"):JSONEncode(ConfigDefault))
+   end
+
+   local File = (readfile(ConfigName))
+
+   if (Number) == (1) then
+       
+      writefile(ConfigName, game:GetService("HttpService"):JSONEncode(ConfigFrog))
+  
+   elseif (Number) == (2) then
+
+      writefile(ConfigName, game:GetService("HttpService"):JSONEncode(ConfigStand))
+   elseif (Number) == (3) then
+      
+      writefile(ConfigName, game:GetService("HttpService"):JSONEncode(ConfigDio))
+   end
+
+end
+
 local AutoExecute = false
 local WaitForDio = {
  On = true,
@@ -59,7 +97,23 @@ local CreateHopGUI = function()
    local Module = (loadstring(game:HttpGetAsync('https://pastebin.com/raw/edJT9EGX'))())
    local ModuleWindow = Module:CreateWindow("Server Hop")
    local ModuleButton = ModuleWindow:AddButton({text = "Start", callback = function() loadstring(Hop)() end})
-      
+   local CW = Module:CreateWindow("Config")
+
+   CW:AddButton({
+     text = "Frog Hunter",
+     callback = function() UpdateCurrent(1) end
+   })
+
+   CW:AddButton({
+     text = "Stand Hunter",
+     callback = function() UpdateCurrent(2) end
+   }) 
+
+   CW:AddButton({
+     text = "DIO Hunter",
+     callback = function() UpdateCurrent(3) end
+   }) 
+
    Module:Init()
 end
 
