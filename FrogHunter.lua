@@ -1,5 +1,33 @@
 if not game.IsLoaded then game.Loaded:Wait() end
 
+local ConfigName = ("ABDHCONFIG.JSON")
+local ConfigDefault = ('["CurrentScript": "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua"]')
+
+local UpdateCurrent = function(Number)
+
+   if isfile(ConfigName) then
+       print("Is File")
+   else
+       writefile(ConfigName, ConfigDefault)
+   end
+
+
+   if (Number) == (1) then
+
+      local Table = game:GetService("HttpService"):JSONDecode(File); Table.CurrentScript = ("https://raw.githubusercontent.com/ScreamerUWU/ABD/main/FrogHunter.lua")
+      local NewTable = game:GetService("HttpService"):JSONEncode(File)
+
+      writefile(ConfigName, NewTable)
+  
+   elseif (Number) == (2) then
+      
+      local Table = game:GetService("HttpService"):JSONDecode(File); Table.CurrentScript = ("https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua")
+      local NewTable = game:GetService("HttpService"):JSONEncode(File)
+
+      writefile(ConfigName, NewTable)
+   end
+end
+
 local Hop = (game:HttpGet("https://raw.githubusercontent.com/ScreamerUWU/MISC/main/Hop.lua"))
 local Player;
 
@@ -41,6 +69,18 @@ else
     local Module = (loadstring(game:HttpGetAsync('https://pastebin.com/raw/edJT9EGX'))())
     local ModuleWindow = Module:CreateWindow("Server Hop")
     local ModuleButton = ModuleWindow:AddButton({text = "Start", callback = function() loadstring(Hop)() end})
+   
+    local CW = Module:CreateWindow("Config")
+
+    CW:AddButton({
+      text = "Frog Hunter",
+      callback = function() UpdateCurrent(1) end
+    })
+
+    CW:AddButton({
+      text = "Stand Hunter",
+      callback = function() UpdateCurrent(2) end
+    }) 
 
     Module:Init()
 end
