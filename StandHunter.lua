@@ -1,5 +1,6 @@
 local StandUserFound = false
 local StandWanted = { 10, 25 }
+local StandWantedFile = ("StandHunterCONFIG.JSON")
 
 --[[ 
 WHITESNAKE = 30
@@ -19,6 +20,27 @@ if not game.IsLoaded then
    Player.CharacterAdded:Wait()
    
    wait(5)
+end
+
+local JSONEncode = function(Table)
+   return game:GetService("HttpService"):JSONEncode(Table)
+end
+
+local JSONDecode = function(Table)
+   return game:GetService("HttpService"):JSONDecode(Table)
+end
+
+local CheckFile = function()
+   if isfile(StandWantedFile) then return true else writefile(StandWantedFile, JSONEncode(StandWanted)) return false end
+end
+
+local FileCheck = CheckFile()
+
+if FileCheck then 
+  
+   local FileTable = JSONDecode(readfile(StandWantedFile))
+   
+   StandWanted = FileTable
 end
 
 local ConfigName = ("ABDHCONFIG.JSON")
