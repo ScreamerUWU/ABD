@@ -66,12 +66,58 @@ for i, v in pairs(ItemFolder:GetChildren()) do
    end
 end
 
+local Dop2 = function()
+   game:GetService("ReplicatedStorage").DoppiotoDoppio2:FireServer()
+end
+
+local Dop3 = function()
+   game:GetService("ReplicatedStorage").Doppio2toKC:FireServer() 
+end
+
+local UseFrog = function()
+  
+   local Humanoid;
+ 
+   if game.Players.LocalPlayer.Character:FindFirstChild("Frog") then
+      if game.Players.LocalPlayer.Data.Stand.Value == (10) then
+         Dop2() 
+      elseif game.Players.LocalPlayer.Data.Stand.Value == (25) then
+         Dop3()
+      end  
+   end
+ 
+   if game.Players.LocalPlayer.Backpack:FindFirstChild("Frog") and not game.Players.LocalPlayer.Character:FindFirstChild("Frog") then
+      
+      if game.Players.LocalPlayer.Character then
+         
+         if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+            Humanoid = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+         else
+            return
+         end
+   
+         Humanoid:UnequipTools()
+         wait()
+         Humanoid:EquipTool(game.Players.LocalPlayer.Backpack:FindFirstChild("Frog"))
+         
+         if game.Players.LocalPlayer.Data.Stand.Value == (10) then
+            Dop2() 
+         elseif game.Players.LocalPlayer.Data.Stand.Value == (25) then
+            Dop3()
+         end
+   
+      end
+   end
+ 
+end
+
 if not FrogFound then
    while true do wait() pcall(function() loadstring(Hop)() end) end
 else
     local Module = (loadstring(game:HttpGetAsync('https://pastebin.com/raw/edJT9EGX'))())
     local ModuleWindow = Module:CreateWindow("Server Hop")
     local ModuleButton = ModuleWindow:AddButton({text = "Start", callback = function() loadstring(Hop)() end})
+    local ModuleButton = ModuleWindow:AddButton({text = "Use Frog", callback = function() UseFrog() end})
    
     local CW = Module:CreateWindow("Config")
 
