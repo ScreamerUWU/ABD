@@ -240,7 +240,7 @@ local KD = function()
       end)
       
       noclip = true
-      for i = 1,100 do PlayerHRP.CFrame = DioHRP.CFrame; Remote:FireServer(unpack(DioArgs)) if Killed then break; end end
+      for i = 1,200 do PlayerHRP.CFrame = DioHRP.CFrame; Remote:FireServer(unpack(DioArgs)) if Killed then break; end end
       repeat wait() if not Killed then PlayerHRP.CFrame = DioHRP.CFrame; Remote:FireServer(unpack(DioArgs)) end until Killed
       noclip = false
    end
