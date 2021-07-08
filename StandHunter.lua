@@ -43,7 +43,6 @@ if FileCheck then
    StandWanted = FileTable
 end
 
-local ConfigName = ("ABDHCONFIG.JSON")
 local ConfigDefault = {
  CurrentScript = "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua"
 }
@@ -52,6 +51,9 @@ local ConfigFrog = {
 }
 local ConfigStand = {
  CurrentScript = "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua"
+}
+local ConfigDio = {
+ CurrentScript = "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/DioHunter.lua"
 }
 
 local UpdateCurrent = function(Number)
@@ -71,7 +73,11 @@ local UpdateCurrent = function(Number)
    elseif (Number) == (2) then
 
       writefile(ConfigName, game:GetService("HttpService"):JSONEncode(ConfigStand))
+   elseif (Number) == (3) then
+      
+      writefile(ConfigName, game:GetService("HttpService"):JSONEncode(ConfigDio))
    end
+
 end
 
 Notify = function(Text, Duration)
@@ -120,6 +126,11 @@ else
         text = "Stand Hunter",
         callback = function() UpdateCurrent(2) end
       }) 
+      
+      CW:AddButton({
+        text = "DIO Hunter",
+        callback = function() UpdateCurrent(3) end
+      })
       
       Module:Init()
 
