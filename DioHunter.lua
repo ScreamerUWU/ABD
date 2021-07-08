@@ -183,6 +183,7 @@ local Noclip = function()
        if game:GetService("Players").LocalPlayer.Character then
           if noclip then
              for i = 1,#ToNC do game:GetService("Players").LocalPlayer.Character[ToNC[i]].CanCollide = false end
+             for noob, lol in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do if lol:IsA("Part") or lol:IsA("BasePart") then lol.Anchored = false end end
           end
        end
    end)
