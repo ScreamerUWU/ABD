@@ -158,17 +158,19 @@ end
 local Remote;
 local RemoteArgs;
 
-Remote = game:GetService("ReplicatedStorage"):WaitForChild("Damage3")
+Remote = game:GetService("ReplicatedStorage"):WaitForChild("Damage")
 RemoteArgs = {
-    [1] = nil,
-    [2] = CFrame.new(Vector3.new(-6279.55078125, 582.18225097656, -379.61291503906), Vector3.new(0.99393075704575, -0.092148125171661, 0.060085330158472)),
-    [3] = 99,
-    [4] = 0,
-    [5] = nil,
-    [6] = 0.1,
-    [7] = "rbxassetid://5066021887",
-    [8] = 1,
-    [9] = 100 
+ [1] = nil,
+ [2] = CFrame.new(Vector3.new(-6800.171875, 582.22436523438, -49.346035003662), Vector3.new(0.99633967876434, -0.085183382034302, 0.007150640245527)),
+ [3] = 150,
+ [4] = 0.25,
+ [5] = Vector3.new(-1.5953843593597, 0.14653858542442, -1.9191861152649),
+ [6] = "rbxassetid://3886466329",
+ [7] = 0.075,
+ [8] = Color3.fromRGB(0,255,0),
+ [9] = "rbxassetid://260430079", 
+ [10] = 60, 
+ [11] = 0.22
 }
 
 
@@ -240,7 +242,7 @@ local KD = function()
       end)
       
       noclip = true
-      for i = 1,200 do PlayerHRP.CFrame = DioHRP.CFrame * CFrame.new(0,-10,0); Remote:FireServer(unpack(DioArgs)) if Killed then break; end end
+      for i = 1,50 do PlayerHRP.CFrame = DioHRP.CFrame * CFrame.new(0,-10,0); Remote:FireServer(unpack(DioArgs)) if Killed then break; end end
       repeat wait() if not Killed then PlayerHRP.CFrame = DioHRP.CFrame * CFrame.new(0,-10,0) Remote:FireServer(unpack(DioArgs)) end until Killed
       noclip = false
    end
