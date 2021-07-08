@@ -43,6 +43,7 @@ if FileCheck then
    StandWanted = FileTable
 end
 
+local ConfigName = ("ABDHCONFIG.JSON")
 local ConfigDefault = {
  CurrentScript = "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua"
 }
