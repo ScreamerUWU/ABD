@@ -1,31 +1,33 @@
 if not game.IsLoaded then game.Loaded:Wait() end
 
 local ConfigName = ("ABDHCONFIG.JSON")
-local ConfigDefault = ('{"CurrentScript": "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua"}')
+local ConfigDefault = {
+ CurrentScript = "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua"
+}
+local ConfigFrog = {
+ CurrentScript = "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/FrogHunter.lua"
+}
+local ConfigStand = {
+ CurrentScript = "https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua"
+}
 
 local UpdateCurrent = function(Number)
 
    if isfile(ConfigName) then
        print("Is File")
    else
-       writefile(ConfigName, ConfigDefault)
+       writefile(ConfigName, game:GetService("HttpService"):JSONEncode(ConfigDefault))
    end
 
    local File = (readfile(ConfigName))
 
    if (Number) == (1) then
-
-      local Table = game:GetService("HttpService"):JSONDecode(File); Table.CurrentScript = ("https://raw.githubusercontent.com/ScreamerUWU/ABD/main/FrogHunter.lua")
-      local NewTable = game:GetService("HttpService"):JSONEncode(File)
-
-      writefile(ConfigName, NewTable)
+       
+      writefile(ConfigName, game:GetService("HttpService"):JSONEncode(ConfigFrog))
   
    elseif (Number) == (2) then
-      
-      local Table = game:GetService("HttpService"):JSONDecode(File); Table.CurrentScript = ("https://raw.githubusercontent.com/ScreamerUWU/ABD/main/StandHunter.lua")
-      local NewTable = game:GetService("HttpService"):JSONEncode(File)
 
-      writefile(ConfigName, NewTable)
+      writefile(ConfigName, game:GetService("HttpService"):JSONEncode(ConfigStand))
    end
 end
 
