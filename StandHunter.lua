@@ -31,7 +31,8 @@ local UpdateCurrent = function(Number)
    else
        writefile(ConfigName, ConfigDefault)
    end
-
+   
+   local File = (readfile(ConfigName))
 
    if (Number) == (1) then
 
